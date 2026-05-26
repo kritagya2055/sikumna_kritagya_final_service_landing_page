@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body bg-black text-white antialiased;
+  }
+}
+
+@layer utilities {
+  /* The single permitted radial gold glow behind the hero headline. */
+  .hero-glow {
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 40%,
+      rgba(201, 169, 97, 0.16),
+      transparent 70%
+    );
+  }
+}
