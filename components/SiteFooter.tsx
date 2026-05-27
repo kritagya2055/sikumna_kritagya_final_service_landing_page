@@ -5,18 +5,18 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black border-t border-white/10">
-      <div className="mx-auto max-w-content px-6 py-12 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+    <footer className="bg-ink text-white">
+      <div className="mx-auto max-w-content px-6 py-12 md:py-14">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display text-2xl text-white">{brand.name}</p>
-            <p className="mt-2 text-sm text-muted">{footer.blurb}</p>
+            <p className="display text-xl">{brand.name}</p>
+            <p className="mt-2 text-sm text-white/60">{footer.blurb}</p>
           </div>
 
           <div className="flex flex-col gap-3 md:items-end">
             <a
               href={`mailto:${footer.email}`}
-              className="text-sm text-offwhite hover:text-gold transition-colors duration-200"
+              className="text-sm text-white/80 hover:text-accent transition-colors duration-200"
             >
               {footer.email}
             </a>
@@ -25,7 +25,7 @@ export function SiteFooter() {
                 <a
                   key={s.label}
                   href={s.href}
-                  className="text-sm text-muted hover:text-gold transition-colors duration-200"
+                  className="text-sm text-white/60 hover:text-accent transition-colors duration-200"
                 >
                   {s.label}
                 </a>
@@ -34,7 +34,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-white/5 text-xs text-muted">
+        <div className="mt-10 pt-6 border-t border-white/10 text-xs text-white/50">
           © {year} {brand.name}. {footer.legal}
         </div>
       </div>

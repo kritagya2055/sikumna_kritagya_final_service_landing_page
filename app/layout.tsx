@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import { siteConfig } from "@/site.config";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["500", "600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -17,14 +17,16 @@ const body = Inter({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.meta.url;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.meta.url),
+  metadataBase: new URL(siteUrl),
   title: siteConfig.meta.title,
   description: siteConfig.meta.description,
   openGraph: {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
-    url: siteConfig.meta.url,
+    url: siteUrl,
     siteName: siteConfig.brand.name,
     type: "website",
   },

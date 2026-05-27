@@ -8,16 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black: "#0A0A0A",
-        white: "#FFFFFF",
-        offwhite: "#F5F1EA",
-        gold: "#C9A961",
-        charcoal: "#1A1A1A",
-        muted: "#6B6B6B",
+        // New v2 palette — bold, high-energy, light base.
+        surface: "#FFFFFF",
+        alt: "#F4F6FA",
+        primary: "#1E5FFF", // electric blue — CTAs
+        deep: "#0A1F66", // deep blue — headlines
+        accent: "#FFD60A", // bright yellow — highlights, checkmarks
+        ink: "#0E0E10", // charcoal text
+        muted: "#5A5A66", // muted text
       },
       fontFamily: {
-        display: ["var(--font-display)", "serif"],
-        body: ["var(--font-body)", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "72rem",

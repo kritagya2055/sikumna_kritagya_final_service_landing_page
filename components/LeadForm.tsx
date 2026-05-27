@@ -18,14 +18,32 @@ export function LeadForm() {
     setStatus("submitting");
     setError(null);
 
-    const formData = new FormData(event.currentTarget);
+    const data = new FormData(event.currentTarget);
+    const get = (key: string) => String(data.get(key) ?? "").trim();
+
+    const name = get("name");
+    const email = get("email");
+    const whatsapp = get("whatsapp");
+    const business = get("business");
+    const link = get("link");
+    const note = get("message");
+
+    // Map the v2 form fields onto the existing /api/lead contract
+    // (name, email, company, message, website-honeypot) so every detail
+    // reaches the notification email without changing the API route.
+    const composedMessage = [
+      `WhatsApp: ${whatsapp}`,
+      `Website / Facebook: ${link}`,
+      "",
+      note ? `Message: ${note}` : "Message: (none)",
+    ].join("\n");
+
     const payload = {
-      name: String(formData.get("name") ?? "").trim(),
-      email: String(formData.get("email") ?? "").trim(),
-      company: String(formData.get("company") ?? "").trim(),
-      message: String(formData.get("message") ?? "").trim(),
-      // Honeypot — bots fill this, humans never see it.
-      website: String(formData.get("website") ?? ""),
+      name,
+      email,
+      company: business,
+      message: composedMessage,
+      website: get("website"), // honeypot
     };
 
     try {
@@ -36,8 +54,8 @@ export function LeadForm() {
       });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.error ?? "Something went wrong. Please try again.");
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? "Something went wrong. Please try again.");
       }
 
       router.push("/thanks");
@@ -47,15 +65,15 @@ export function LeadForm() {
     }
   }
 
-  const labelClass = "block text-sm font-medium text-offwhite mb-2";
+  const labelClass = "block text-sm font-semibold text-ink mb-1.5";
   const inputClass =
-    "w-full rounded-md bg-charcoal border border-white/10 px-4 py-3 text-white placeholder:text-muted focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors duration-200";
+    "w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors duration-200";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="name" className={labelClass}>
-          {fields.name.label}
+          {fields.name.label} <span className="text-primary">*</span>
         </label>
         <input
           id="name"
@@ -70,7 +88,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="email" className={labelClass}>
-          {fields.email.label}
+          {fields.email.label} <span className="text-primary">*</span>
         </label>
         <input
           id="email"
@@ -84,15 +102,47 @@ export function LeadForm() {
       </div>
 
       <div>
-        <label htmlFor="company" className={labelClass}>
-          {fields.company.label}
+        <label htmlFor="whatsapp" className={labelClass}>
+          {fields.whatsapp.label} <span className="text-primary">*</span>
         </label>
         <input
-          id="company"
-          name="company"
+          id="whatsapp"
+          name="whatsapp"
+          type="tel"
+          required
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder={fields.whatsapp.placeholder}
+          className={inputClass}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="business" className={labelClass}>
+          {fields.business.label} <span className="text-primary">*</span>
+        </label>
+        <input
+          id="business"
+          name="business"
           type="text"
+          required
           autoComplete="organization"
-          placeholder={fields.company.placeholder}
+          placeholder={fields.business.placeholder}
+          className={inputClass}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="link" className={labelClass}>
+          {fields.link.label} <span className="text-primary">*</span>
+        </label>
+        <input
+          id="link"
+          name="link"
+          type="text"
+          required
+          autoComplete="url"
+          placeholder={fields.link.placeholder}
           className={inputClass}
         />
       </div>
@@ -104,21 +154,26 @@ export function LeadForm() {
         <textarea
           id="message"
           name="message"
-          rows={4}
-          required
+          rows={3}
           placeholder={fields.message.placeholder}
           className={`${inputClass} resize-none`}
         />
       </div>
 
-      {/* Honeypot field — visually hidden, ignored by humans. */}
+      {/* Honeypot — visually hidden, ignored by humans. */}
       <div className="absolute left-[-9999px]" aria-hidden="true">
         <label htmlFor="website">Leave this field empty</label>
-        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       {error && (
-        <p role="alert" className="text-sm text-gold">
+        <p role="alert" className="text-sm font-medium text-red-600">
           {error}
         </p>
       )}
@@ -126,12 +181,12 @@ export function LeadForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-md bg-gold px-6 py-4 font-medium text-black transition-opacity duration-200 hover:opacity-90 disabled:opacity-60"
+        className="w-full rounded-xl bg-primary px-6 py-4 text-lg font-semibold text-white transition-opacity duration-200 hover:opacity-90 disabled:opacity-60"
       >
         {status === "submitting" ? submittingLabel : submitLabel}
       </button>
 
-      <p className="text-xs text-muted text-center">{consentNote}</p>
+      <p className="text-center text-xs text-muted">{consentNote}</p>
     </form>
   );
 }

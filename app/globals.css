@@ -8,17 +8,17 @@
   }
 
   body {
-    @apply font-body bg-black text-white antialiased;
+    @apply font-body bg-surface text-ink antialiased;
+  }
+
+  /* Visible, high-contrast focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-surface;
   }
 }
 
 @layer utilities {
-  /* The single permitted radial gold glow behind the hero headline. */
-  .hero-glow {
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 40%,
-      rgba(201, 169, 97, 0.16),
-      transparent 70%
-    );
+  .display {
+    @apply font-display font-bold tracking-tight;
   }
 }
