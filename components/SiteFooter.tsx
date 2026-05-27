@@ -29,7 +29,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-platinum/20 pt-8">
-          <p className="text-sm text-muted">{footer.legal}</p>
+          <p className="text-sm text-muted">{footer.audience}</p>
+          <p className="mt-2 text-sm text-muted">{footer.legal}</p>
         </div>
       </div>
     </footer>

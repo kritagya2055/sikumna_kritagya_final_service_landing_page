@@ -45,14 +45,21 @@ export function Hero() {
           />
         </motion.div>
 
+        <motion.p variants={item} className="eyebrow mt-12 text-platinum">
+          {hero.eyebrow}
+        </motion.p>
+
         <motion.h1
           variants={item}
-          className="mt-16 max-w-5xl text-[44px] font-semibold leading-[1.02] tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[88px]"
+          className="mt-6 max-w-5xl text-[44px] font-semibold leading-[1.02] tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[88px]"
         >
-          {hero.headlineLead}{" "}
+          {hero.headlineLine1Pre}{" "}
           <span className="font-serif font-normal italic tracking-tight">
             {hero.headlineSerif}
           </span>
+          {hero.headlineLine1Post}
+          <br />
+          {hero.headlineLine2}
         </motion.h1>
 
         <motion.p
@@ -73,6 +80,10 @@ export function Hero() {
 
         <motion.p variants={item} className="mt-6 text-sm text-muted">
           {hero.note}
+        </motion.p>
+
+        <motion.p variants={item} className="mt-3 text-xs text-muted">
+          {hero.trustLine}
         </motion.p>
       </motion.div>
     </section>
