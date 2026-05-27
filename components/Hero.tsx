@@ -1,45 +1,80 @@
-import { SiteHeader } from "@/components/SiteHeader";
+"use client";
+
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { siteConfig } from "@/site.config";
 
+const { brand, hero } = siteConfig;
+
 export function Hero() {
-  const { hero } = siteConfig;
+  const reduce = useReducedMotion();
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    },
+  };
+  const item = {
+    hidden: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    },
+  };
 
   return (
-    <section className="bg-surface">
-      <SiteHeader />
-      <div className="mx-auto max-w-content px-6 pt-12 pb-16 md:pt-20 md:pb-24 text-center">
-        <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-ink">
-          {hero.eyebrow}
-        </span>
+    <section className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden bg-obsidian px-6 py-24">
+      <div aria-hidden className="pointer-events-none absolute inset-0 hero-vignette" />
 
-        <h1 className="mx-auto mt-6 max-w-4xl display text-4xl leading-[1.05] text-deep sm:text-5xl md:text-6xl">
-          {hero.headline}
-        </h1>
+      <motion.div
+        className="relative z-10 flex w-full max-w-content flex-col items-center text-center"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item}>
+          <Image
+            src={brand.logoSrc}
+            alt={brand.logoAlt}
+            width={180}
+            height={60}
+            priority
+            className="h-11 w-auto object-contain md:h-12"
+          />
+        </motion.div>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl">
+        <motion.h1
+          variants={item}
+          className="mt-16 max-w-5xl text-[44px] font-semibold leading-[1.02] tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[88px]"
+        >
+          {hero.headlineLead}{" "}
+          <span className="font-serif font-normal italic tracking-tight">
+            {hero.headlineSerif}
+          </span>
+        </motion.h1>
+
+        <motion.p
+          variants={item}
+          className="mt-8 max-w-md text-base text-muted md:text-lg"
+        >
           {hero.subhead}
-        </p>
+        </motion.p>
 
-        <div className="mt-9 flex flex-col items-center gap-4">
+        <motion.div variants={item} className="mt-12">
           <a
             href="#book"
-            className="inline-block rounded-xl bg-primary px-8 py-4 text-lg font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+            className="inline-block rounded-full border border-white/70 px-8 py-4 text-sm font-medium text-white transition-colors duration-200 hover:border-white hover:bg-white hover:text-obsidian md:text-base"
           >
             {hero.cta}
           </a>
-          <p className="flex items-center gap-2 text-sm font-semibold text-deep">
-            <span
-              aria-hidden
-              className="inline-block h-2 w-2 rounded-full bg-primary"
-            />
-            {hero.urgency}
-          </p>
-        </div>
+        </motion.div>
 
-        <p className="mx-auto mt-8 max-w-xl text-sm text-muted">
-          {hero.trustLine}
-        </p>
-      </div>
+        <motion.p variants={item} className="mt-6 text-sm text-muted">
+          {hero.note}
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

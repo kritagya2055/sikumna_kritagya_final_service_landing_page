@@ -1,38 +1,48 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/SiteHeader";
+import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteConfig } from "@/site.config";
 
+const { brand, thanks } = siteConfig;
+
 export const metadata: Metadata = {
-  title: `You're in — ${siteConfig.brand.name}`,
+  title: `You're in — ${brand.name}`,
   robots: { index: false, follow: false },
 };
 
 export default function ThanksPage() {
-  const { thanks } = siteConfig;
-
   return (
-    <main className="bg-surface">
-      <SiteHeader />
-
-      <section className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-        <div className="text-center">
-          <h1 className="display text-4xl text-deep md:text-5xl">
-            {thanks.headline}
-          </h1>
-          <p className="mt-4 text-lg text-muted">{thanks.subhead}</p>
+    <main className="bg-obsidian">
+      <div className="mx-auto max-w-2xl px-6 pb-24 pt-16 md:pt-20">
+        <div className="flex justify-center">
+          <Image
+            src={brand.logoSrc}
+            alt={brand.logoAlt}
+            width={150}
+            height={50}
+            priority
+            className="h-10 w-auto object-contain"
+          />
         </div>
 
-        {/* ── Section 1 — Video ─────────────────────────── */}
-        <div className="mt-12">
-          <p className="text-center font-semibold text-deep">
-            {thanks.videoCaption}
-          </p>
-          <div className="mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-ink/10 bg-alt">
-            {/* TODO: replace VIMEO_ID_PLACEHOLDER with real Vimeo ID */}
+        <div className="mt-20 text-center">
+          <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+            {thanks.headline}
+          </h1>
+          <p className="mt-5 text-lg text-muted">{thanks.subhead}</p>
+        </div>
+
+        {/* ── 01 — Video ──────────────────────────────────── */}
+        <div className="mt-24">
+          <p className="eyebrow text-platinum">{thanks.video.eyebrow}</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+            {thanks.video.heading}
+          </h2>
+          <div className="mt-8 aspect-video w-full overflow-hidden rounded-xl bg-[#111111]">
+            {/* TODO: replace VIMEO_ID_PLACEHOLDER */}
             <iframe
               src="https://player.vimeo.com/video/VIMEO_ID_PLACEHOLDER"
-              title="A 2-minute message from Kritagya"
+              title="A two-minute message from Kritagya"
               className="h-full w-full"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
@@ -40,34 +50,35 @@ export default function ThanksPage() {
           </div>
         </div>
 
-        {/* ── Section 2 — Calendly ──────────────────────── */}
-        <div className="mt-12">
-          <p className="text-center font-semibold text-deep">
-            {thanks.calendlyCaption}
-          </p>
-          <div className="mt-4 w-full overflow-hidden rounded-2xl border border-ink/10 bg-alt">
-            {/* TODO: replace CALENDLY_HANDLE_PLACEHOLDER with real Calendly URL */}
+        {/* ── 02 — Calendly ───────────────────────────────── */}
+        <div className="mt-24">
+          <p className="eyebrow text-platinum">{thanks.calendly.eyebrow}</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+            {thanks.calendly.heading}
+          </h2>
+          <div className="mt-8 w-full overflow-hidden rounded-xl bg-[#111111]">
+            {/* TODO: replace CALENDLY_HANDLE_PLACEHOLDER */}
             <iframe
-              src="https://calendly.com/CALENDLY_HANDLE_PLACEHOLDER"
-              title="Pick your 30-minute slot"
+              src="https://calendly.com/CALENDLY_HANDLE_PLACEHOLDER?background_color=0a0a0a&text_color=ffffff&primary_color=c8c7c2"
+              title="Choose your slot"
               className="w-full"
               style={{ minHeight: "700px" }}
             />
           </div>
         </div>
 
-        {/* ── Bottom — WhatsApp ─────────────────────────── */}
-        <div className="mt-12 text-center">
+        {/* ── WhatsApp fallback ───────────────────────────── */}
+        <p className="mt-20 text-center text-sm text-muted">
           <a
-            href={thanks.whatsappHref}
+            href={thanks.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-xl bg-accent px-8 py-4 text-lg font-bold text-ink transition-opacity duration-200 hover:opacity-90"
+            className="underline decoration-platinum/40 underline-offset-4 transition-colors hover:text-platinum"
           >
-            {thanks.whatsappCta}
+            {thanks.whatsapp.label}
           </a>
-        </div>
-      </section>
+        </p>
+      </div>
 
       <SiteFooter />
     </main>

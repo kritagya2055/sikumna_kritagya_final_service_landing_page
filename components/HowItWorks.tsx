@@ -1,30 +1,37 @@
+import { FadeIn } from "@/components/FadeIn";
 import { siteConfig } from "@/site.config";
 
+const { howItWorks } = siteConfig;
+
 export function HowItWorks() {
-  const { howItWorks } = siteConfig;
-
   return (
-    <section className="bg-alt py-16 md:py-24">
+    <section className="bg-white py-20 md:py-32">
       <div className="mx-auto max-w-content px-6">
-        <h2 className="text-center display text-3xl text-deep md:text-4xl">
-          {howItWorks.heading}
-        </h2>
+        <FadeIn>
+          <h2 className="text-center text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+            {howItWorks.heading}
+          </h2>
+        </FadeIn>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {howItWorks.steps.map((step) => (
-            <div
+        <div className="mx-auto mt-16 grid max-w-4xl md:grid-cols-3 md:gap-12">
+          {howItWorks.steps.map((step, i) => (
+            <FadeIn
               key={step.number}
-              className="rounded-2xl bg-white p-7 shadow-sm"
+              delay={i * 0.1}
+              className={
+                i > 0
+                  ? "border-t border-platinum/50 pt-8 md:border-l md:border-t-0 md:pl-8 md:pt-0"
+                  : ""
+              }
             >
-              <span
-                aria-hidden
-                className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-xl font-bold text-white"
-              >
+              <p className="text-3xl font-semibold tracking-tight text-muted md:text-4xl">
                 {step.number}
-              </span>
-              <h3 className="mt-5 display text-2xl text-deep">{step.title}</h3>
+              </p>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-ink">
+                {step.title}
+              </h3>
               <p className="mt-2 text-muted">{step.body}</p>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </div>

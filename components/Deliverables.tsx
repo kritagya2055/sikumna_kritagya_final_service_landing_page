@@ -1,38 +1,31 @@
+import { FadeIn } from "@/components/FadeIn";
 import { siteConfig } from "@/site.config";
 
-export function Deliverables() {
-  const { deliverables } = siteConfig;
+const { deliverables } = siteConfig;
 
+export function Deliverables() {
   return (
-    <section className="bg-surface py-16 md:py-24">
+    <section className="bg-offwhite py-20 md:py-32">
       <div className="mx-auto max-w-content px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="display text-3xl text-deep md:text-4xl">
+        <FadeIn>
+          <h2 className="text-center text-3xl font-semibold tracking-tight text-ink md:text-5xl">
             {deliverables.heading}
           </h2>
-          <p className="mt-4 text-lg text-muted">{deliverables.subhead}</p>
-        </div>
+        </FadeIn>
 
-        <ul className="mx-auto mt-10 max-w-2xl space-y-4">
-          {deliverables.items.map((item) => (
-            <li key={item.lead} className="flex items-start gap-4">
-              <span
-                aria-hidden
-                className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-accent text-sm font-bold text-ink"
-              >
-                ✓
-              </span>
-              <p className="text-lg text-ink">
-                <span className="font-bold">{item.lead}</span>
-                <span className="text-muted"> — {item.body}</span>
+        <div className="mx-auto mt-16 grid max-w-3xl gap-x-16 gap-y-14 sm:grid-cols-2">
+          {deliverables.items.map((item, i) => (
+            <FadeIn key={item.number} delay={i * 0.08}>
+              <p className="text-4xl font-semibold tracking-tight text-muted md:text-5xl">
+                {item.number}
               </p>
-            </li>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-ink">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-muted">{item.body}</p>
+            </FadeIn>
           ))}
-        </ul>
-
-        <p className="mx-auto mt-10 max-w-xl rounded-2xl bg-alt px-6 py-5 text-center font-semibold text-deep">
-          {deliverables.close}
-        </p>
+        </div>
       </div>
     </section>
   );

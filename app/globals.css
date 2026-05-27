@@ -5,20 +5,34 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply font-body bg-surface text-ink antialiased;
+    @apply bg-obsidian text-white font-sans;
   }
 
-  /* Visible, high-contrast focus ring for keyboard users. */
+  /* Visible focus ring — adapts to either background via currentColor. */
   :focus-visible {
-    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-surface;
+    @apply outline-none ring-2 ring-platinum ring-offset-2;
+    --tw-ring-offset-color: transparent;
   }
 }
 
 @layer utilities {
-  .display {
-    @apply font-display font-bold tracking-tight;
+  /* Eyebrow / caption styling. Set the color per-use:
+     platinum on obsidian, muted on white for WCAG AA contrast. */
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em];
+  }
+
+  /* Subtle radial vignette for the hero only. */
+  .hero-vignette {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 35%,
+      rgba(255, 255, 255, 0.04),
+      transparent 70%
+    );
   }
 }

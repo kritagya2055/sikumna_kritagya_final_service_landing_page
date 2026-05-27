@@ -8,6 +8,10 @@ const { fields, submitLabel, submittingLabel, consentNote } = siteConfig.form;
 
 type Status = "idle" | "submitting" | "error";
 
+const labelClass = "eyebrow block text-platinum";
+const inputClass =
+  "w-full border-0 border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-muted focus:border-white focus:outline-none focus:ring-0 transition-colors duration-200";
+
 export function LeadForm() {
   const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
@@ -21,27 +25,21 @@ export function LeadForm() {
     const data = new FormData(event.currentTarget);
     const get = (key: string) => String(data.get(key) ?? "").trim();
 
-    const name = get("name");
-    const email = get("email");
-    const whatsapp = get("whatsapp");
-    const business = get("business");
-    const link = get("link");
-    const note = get("message");
-
-    // Map the v2 form fields onto the existing /api/lead contract
+    // Map the v3 form fields onto the existing /api/lead contract
     // (name, email, company, message, website-honeypot) so every detail
     // reaches the notification email without changing the API route.
+    const note = get("message");
     const composedMessage = [
-      `WhatsApp: ${whatsapp}`,
-      `Website / Facebook: ${link}`,
+      `WhatsApp: ${get("whatsapp")}`,
+      `Website / Facebook: ${get("link")}`,
       "",
       note ? `Message: ${note}` : "Message: (none)",
     ].join("\n");
 
     const payload = {
-      name,
-      email,
-      company: business,
+      name: get("name"),
+      email: get("email"),
+      company: get("business"),
       message: composedMessage,
       website: get("website"), // honeypot
     };
@@ -65,15 +63,11 @@ export function LeadForm() {
     }
   }
 
-  const labelClass = "block text-sm font-semibold text-ink mb-1.5";
-  const inputClass =
-    "w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none transition-colors duration-200";
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-8" noValidate>
       <div>
         <label htmlFor="name" className={labelClass}>
-          {fields.name.label} <span className="text-primary">*</span>
+          {fields.name.label}
         </label>
         <input
           id="name"
@@ -88,7 +82,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="email" className={labelClass}>
-          {fields.email.label} <span className="text-primary">*</span>
+          {fields.email.label}
         </label>
         <input
           id="email"
@@ -103,7 +97,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="whatsapp" className={labelClass}>
-          {fields.whatsapp.label} <span className="text-primary">*</span>
+          {fields.whatsapp.label}
         </label>
         <input
           id="whatsapp"
@@ -119,7 +113,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="business" className={labelClass}>
-          {fields.business.label} <span className="text-primary">*</span>
+          {fields.business.label}
         </label>
         <input
           id="business"
@@ -134,7 +128,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="link" className={labelClass}>
-          {fields.link.label} <span className="text-primary">*</span>
+          {fields.link.label}
         </label>
         <input
           id="link"
@@ -154,7 +148,7 @@ export function LeadForm() {
         <textarea
           id="message"
           name="message"
-          rows={3}
+          rows={2}
           placeholder={fields.message.placeholder}
           className={`${inputClass} resize-none`}
         />
@@ -173,20 +167,21 @@ export function LeadForm() {
       </div>
 
       {error && (
-        <p role="alert" className="text-sm font-medium text-red-600">
+        <p role="alert" className="text-sm text-red-400">
           {error}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full rounded-xl bg-primary px-6 py-4 text-lg font-semibold text-white transition-opacity duration-200 hover:opacity-90 disabled:opacity-60"
-      >
-        {status === "submitting" ? submittingLabel : submitLabel}
-      </button>
-
-      <p className="text-center text-xs text-muted">{consentNote}</p>
+      <div className="pt-2">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="w-full rounded-full bg-white px-8 py-4 text-sm font-medium text-ink transition-opacity duration-200 hover:opacity-90 disabled:opacity-60 md:text-base"
+        >
+          {status === "submitting" ? submittingLabel : submitLabel}
+        </button>
+        <p className="mt-4 text-center text-sm text-muted">{consentNote}</p>
+      </div>
     </form>
   );
 }

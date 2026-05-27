@@ -16,139 +16,131 @@ export const siteConfig = {
 
   // ── SEO / metadata ──────────────────────────────────────
   meta: {
-    title: "Book a Free Marketing Strategy Call — Kritagya Bhandari",
+    title: "Kritagya Bhandari — Digital Marketing",
     description:
-      "Built for ambitious Nepali business owners ready to grow. Book a free 30-minute call and walk away with a custom plan to bring real paying customers — not vanity likes.",
+      "A free 30-minute call. Walk away with a custom plan to bring real customers to your business. Built for ambitious Nepali business owners.",
     // Override at deploy time with the NEXT_PUBLIC_SITE_URL env var.
     url: "https://kritagyabhandari.com",
   },
 
-  audienceLine: "Built for ambitious Nepali business owners ready to grow.",
-
   // ── Where lead notifications are sent ───────────────────
   notificationEmail: "contact.kritagya27@gmail.com",
 
-  // ── Hero ────────────────────────────────────────────────
+  // ── 1. Hero ─────────────────────────────────────────────
   hero: {
-    eyebrow: "FREE 1:1 CONSULTATION CALL",
-    headline: "Get a marketing plan that actually brings customers.",
+    // The headline renders as: "Marketing built to bring you {serif}".
+    headlineLead: "Marketing built to bring you",
+    headlineSerif: "customers.",
     subhead:
-      "In 30 minutes, walk away with a custom plan to bring real paying customers to your business — not vanity likes.",
-    cta: "Book my FREE call →",
-    urgency: "Only 5 free spots open this week",
-    trustLine:
-      "100% free  ·  No credit card  ·  Built for ambitious Nepali business owners",
+      "A free 30-minute call. Walk away with a custom plan for your business.",
+    cta: "Book your free call",
+    note: "Limited to 5 calls per week.",
   },
 
-  // ── Problem section ─────────────────────────────────────
-  problem: {
-    heading: "Tired of boosting posts that go nowhere?",
-    subhead: "If any of this sounds familiar, you're not alone.",
-    points: [
-      "Boosting posts with zero leads",
-      "Followers go up, sales don't move",
-      "Throwing money at ads with no real plan",
-      "Watching competitors win on Instagram while you stall",
-    ],
+  // ── 2. The shift ────────────────────────────────────────
+  shift: {
+    eyebrow: "THE REALITY",
+    statement:
+      "Most businesses are paying for marketing that doesn't sell. Likes, reach, engagement — none of it pays the bills. Customers do.",
+    closing: "This call gives you a plan to fix that.",
   },
 
-  // ── What you'll get in the call ─────────────────────────
+  // ── 3. What you walk away with ──────────────────────────
   deliverables: {
-    heading: "What you walk away with",
-    subhead: "Not a sales pitch. A real plan you own.",
+    heading: "What you walk away with.",
     items: [
       {
-        lead: "A clear diagnosis",
-        body: "why your current marketing isn't converting",
+        number: "01",
+        title: "A real diagnosis.",
+        body: "Why your marketing isn't converting today.",
       },
       {
-        lead: "A custom 90-day plan",
-        body: "built around YOUR business, not a template",
+        number: "02",
+        title: "A custom plan.",
+        body: "Built for your business, your budget, your stage.",
       },
       {
-        lead: "The right platforms & content style",
-        body: "exactly where to focus",
+        number: "03",
+        title: "A clear next step.",
+        body: "Exact actions to take in the next 7 days.",
       },
       {
-        lead: "Specific budget guidance",
-        body: "Rs. amount + where to spend it",
-      },
-      {
-        lead: "7-day action steps",
-        body: "things you can start the same day",
+        number: "04",
+        title: "No sales pitch.",
+        body: "You keep the plan. Whether we work together or not.",
       },
     ],
-    close: "Zero sales pitch. You keep the plan whether you work with me or not.",
   },
 
-  // ── How the call works ──────────────────────────────────
+  // ── 4. How it works ─────────────────────────────────────
   howItWorks: {
-    heading: "How it works",
+    heading: "How it works.",
     steps: [
       {
-        number: "1",
-        title: "Fill the form",
-        body: "90 seconds. Tell me about your business.",
+        number: "01",
+        title: "Apply.",
+        body: "Fill the form. 60 seconds.",
       },
       {
-        number: "2",
-        title: "Pick your slot",
-        body: "Choose a 30-min time that works for you.",
+        number: "02",
+        title: "Choose.",
+        body: "Pick a 30-minute slot that suits you.",
       },
       {
-        number: "3",
-        title: "Get on the call",
-        body: "Walk away with your custom plan in hand.",
+        number: "03",
+        title: "Show up.",
+        body: "Get on the call. Walk away with the plan.",
       },
     ],
   },
 
-  // ── Why book now (urgency block) ────────────────────────
-  whyNow: {
-    heading: "Why now matters.",
-    body: "I only take 5 free strategy calls per week. Once they're gone, they're gone. Book yours before someone in your industry does.",
-    cta: "Claim your free spot →",
+  // ── 5. Availability ─────────────────────────────────────
+  availability: {
+    eyebrow: "AVAILABILITY",
+    statement: "Five calls per week. No exceptions.",
+    note: "When the slots are gone, they're gone. Book yours below.",
+    cta: "Book your free call",
   },
 
-  // ── FAQ ─────────────────────────────────────────────────
+  // ── 6. Questions ────────────────────────────────────────
   faq: {
-    heading: "Questions, answered",
+    heading: "Questions.",
     items: [
       {
-        q: "Is this REALLY free?",
-        a: "Yes. Zero cost. No card. No bait-and-switch. Some calls turn into paid work, most don't. Either way, you walk away with a plan.",
+        q: "Is this really free?",
+        a: "Yes. No cost, no card, no obligation. You keep the plan either way.",
       },
       {
-        q: "Who is this for?",
-        a: "Nepali business owners running a real business who want more customers. Café, clothing brand, clinic, online store — doesn't matter. If you sell something, this call helps.",
+        q: "Who is it for?",
+        a: "Nepali business owners who sell something real and want more customers. Any industry, any stage.",
       },
       {
         q: "What happens on the call?",
-        a: "30 minutes. I ask about your business, goals, what you've tried. You leave with a specific plan you can use immediately.",
+        a: "I ask about your business and what you've tried. You leave with a specific plan you can use.",
       },
       {
-        q: "How long is the call?",
-        a: "30 minutes. Sometimes 45 if we go deep. Never longer.",
+        q: "How long is it?",
+        a: "Thirty minutes. Sometimes forty-five if we go deep. Never longer.",
       },
       {
         q: "Do I need a website?",
-        a: "No. You can run entirely on Instagram or Facebook. We'll work with what you have.",
+        a: "No. We work with what you have, even if that's only Instagram or Facebook.",
       },
       {
         q: "What happens after I fill the form?",
-        a: "You'll go to a confirmation page, pick a time slot, and get an email confirmation immediately.",
+        a: "You go to a confirmation page, pick a time, and get an email confirmation right away.",
       },
       {
-        q: "Will you actually build a plan, or just sell to me?",
+        q: "Will you actually build me a plan, or is this a sales pitch?",
         a: "A real plan. Specific channels, specific budget, specific steps. You own it after the call.",
       },
     ],
   },
 
-  // ── Lead form ───────────────────────────────────────────
+  // ── 7. Booking form ─────────────────────────────────────
   form: {
-    heading: "Book your free spot.",
-    subhead: "5 spots open this week. Takes 60 seconds.",
+    heading: "Book your call.",
+    subhead: "Five spots open this week.",
     fields: {
       name: { label: "Full Name", placeholder: "Your name" },
       email: { label: "Email", placeholder: "you@email.com" },
@@ -160,34 +152,40 @@ export const siteConfig = {
       },
       message: {
         label: "Message for Us",
-        placeholder: "Anything you'd like me to know (optional)",
+        placeholder: "Optional",
       },
     },
-    submitLabel: "Book my free call →",
-    submittingLabel: "Booking…",
-    consentNote: "100% free. No credit card. Just a real conversation.",
+    submitLabel: "Book my call →",
+    submittingLabel: "Booking",
+    consentNote: "Free. No card. No pitch.",
   },
 
-  // ── Footer ──────────────────────────────────────────────
+  // ── 8. Footer ───────────────────────────────────────────
   footer: {
-    blurb: "Built for ambitious Nepali business owners ready to grow.",
-    email: "contact.kritagya27@gmail.com",
-    socials: [
-      { label: "Instagram", href: "#" },
-      { label: "Facebook", href: "#" },
-      { label: "LinkedIn", href: "#" },
+    links: [
+      { label: "Privacy", href: "#" },
+      { label: "Contact", href: "mailto:contact.kritagya27@gmail.com" },
+      { label: "WhatsApp", href: "https://wa.me/977XXXXXXXXXX" },
     ],
-    legal: "All rights reserved.",
+    legal: "© 2026 Kritagya Bhandari. Built for ambitious Nepali business owners.",
   },
 
-  // ── Thanks page ─────────────────────────────────────────
+  // ── /thanks page ────────────────────────────────────────
   thanks: {
-    headline: "You're in. Now book your slot.",
-    subhead: "Two quick things before our call:",
-    videoCaption: "Watch this 2-min message from Kritagya ↓",
-    calendlyCaption: "Pick your 30-min slot ↓",
-    whatsappCta: "Need help? WhatsApp me →",
-    whatsappHref: "https://wa.me/977XXXXXXXXXX",
+    headline: "You're in.",
+    subhead: "Two things before our call.",
+    video: {
+      eyebrow: "01 — WATCH",
+      heading: "A two-minute message.",
+    },
+    calendly: {
+      eyebrow: "02 — BOOK",
+      heading: "Choose your slot.",
+    },
+    whatsapp: {
+      label: "Trouble booking? Message on WhatsApp.",
+      href: "https://wa.me/977XXXXXXXXXX",
+    },
   },
 } as const;
 
