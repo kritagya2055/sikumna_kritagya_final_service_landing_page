@@ -24,23 +24,10 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-      {/* Gradient placeholder — always present. */}
+      {/* Pure CSS background — deep #0B0B14 base with a warm radial
+          glow rising from the bottom-center. See `.hero-gradient` in
+          app/globals.css. */}
       <div aria-hidden className="hero-gradient absolute inset-0" />
-      {/*
-        TODO — drop an image at `public/hero-bg.jpg` and it'll
-        automatically cover the gradient. Missing image is harmless;
-        the layer simply stays empty.
-      */}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('${hero.bgImage}')` }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
-      />
 
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center px-6 py-24 text-center md:py-32"

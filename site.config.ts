@@ -44,10 +44,6 @@ export const siteConfig = {
       "Tired of paying for marketing that doesn't bring customers? We'll fix that on a call.",
     cta: "Book my free call",
     trustLine: "Built for real businesses. Real owners. Real growth.",
-    // Path to an optional hero background image. Drop a file at
-    // `public/hero-bg.jpg` and the hero will swap from the gradient
-    // placeholder to that image automatically.
-    bgImage: "/hero-bg.jpg",
   },
 
   // ── Problem section ─────────────────────────────────────
