@@ -1,36 +1,27 @@
 import Image from "next/image";
+import { SocialIcons } from "@/components/SocialIcons";
 import { siteConfig } from "@/site.config";
 
 const { brand, footer } = siteConfig;
 
 export function SiteFooter() {
   return (
-    <footer className="bg-obsidian px-6 pb-12 pt-16">
+    <footer className="border-t border-cardBorder px-5 py-10 md:py-12">
       <div className="mx-auto max-w-content">
-        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+        <div className="flex items-center justify-between gap-6">
           <Image
             src={brand.logoSrc}
             alt={brand.logoAlt}
             width={120}
-            height={40}
-            className="h-8 w-auto object-contain"
+            height={32}
+            className="h-7 w-auto object-contain md:h-8"
           />
-          <nav className="flex gap-8">
-            {footer.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm text-muted transition-colors duration-200 hover:text-platinum"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <SocialIcons />
         </div>
 
-        <div className="mt-12 border-t border-platinum/20 pt-8">
+        <div className="mt-10 text-center">
           <p className="text-sm text-muted">{footer.audience}</p>
-          <p className="mt-2 text-sm text-muted">{footer.legal}</p>
+          <p className="mt-2 text-xs text-muted">{footer.legal}</p>
         </div>
       </div>
     </footer>

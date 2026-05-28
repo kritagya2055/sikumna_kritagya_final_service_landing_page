@@ -2,11 +2,9 @@
  * site.config.ts
  * ─────────────────────────────────────────────────────────────
  * SINGLE SOURCE OF TRUTH for all editable copy & contact details.
- * Edit this file to change any text on the landing or thanks page.
  */
 
 export const siteConfig = {
-  // ── Brand ───────────────────────────────────────────────
   brand: {
     name: "Kritagya Bhandari",
     tagline: "Digital Marketing",
@@ -14,101 +12,79 @@ export const siteConfig = {
     logoAlt: "Kritagya Bhandari — Digital Marketing",
   },
 
-  // ── SEO / metadata ──────────────────────────────────────
   meta: {
     title:
       "Your customers are out there. Here's the plan to bring them in. | Kritagya Bhandari",
     description:
       "A free 1:1 marketing consultation for Nepali business owners. Walk away with a custom plan to bring you real customers.",
-    // Override at deploy time with the NEXT_PUBLIC_SITE_URL env var.
     url: "https://kritagyabhandari.com",
   },
 
-  // ── Where lead notifications are sent ───────────────────
   notificationEmail: "contact.kritagya27@gmail.com",
 
-  // ── 1. Hero ─────────────────────────────────────────────
+  // ── Phone (rendered in hero + nav) ──────────────────────
+  phone: {
+    display: "+977 9761673867",
+    tel: "+9779761673867",
+  },
+
+  // ── Socials (nav + footer) ──────────────────────────────
+  social: {
+    instagram: "https://instagram.com/PLACEHOLDER",
+    facebook: "https://facebook.com/PLACEHOLDER",
+    whatsapp: "https://wa.me/9779761673867",
+    phone: "tel:+9779761673867",
+  },
+
+  // ── Hero ────────────────────────────────────────────────
   hero: {
-    eyebrow: "FREE 1:1 CONSULTATION CALL",
-    // Headline renders on two lines. "out there" is the single
-    // Instrument Serif italic accent on the whole page.
-    headlineLine1Pre: "Your customers are",
-    headlineSerif: "out there",
-    headlineLine1Post: ".",
-    headlineLine2: "Here's the plan to bring them in.",
+    badge: "FREE 1:1 CONSULTATION CALL",
+    headline: "Your customers are out there. Here's the plan to bring them in.",
     subhead:
       "Tired of paying for marketing that doesn't bring customers? We'll fix that on a call.",
     cta: "Book my free call",
-    note: "Spots are limited. Don't wait.",
     trustLine: "Built for real businesses. Real owners. Real growth.",
+    // Path to an optional hero background image. Drop a file at
+    // `public/hero-bg.jpg` and the hero will swap from the gradient
+    // placeholder to that image automatically.
+    bgImage: "/hero-bg.jpg",
   },
 
-  // ── 2. The problem ──────────────────────────────────────
-  shift: {
-    eyebrow: "BE HONEST",
-    statement:
-      "Here's what no one will tell you: most businesses pay for marketing that doesn't sell. Likes. Reach. Engagement. None of it pays your rent. Customers do. And without a real plan, customers don't come.",
-    closing: "That ends here.",
+  // ── Problem section ─────────────────────────────────────
+  problem: {
+    headline: "Most businesses pay for marketing that doesn't sell.",
+    body: "Likes. Reach. Engagement. None of it pays your rent. Customers do. And without a real plan, customers don't come. That ends here.",
   },
 
-  // ── 3. What you walk away with ──────────────────────────
+  // ── Deliverables (left card) ────────────────────────────
   deliverables: {
     heading: "After the call, you'll have:",
     items: [
-      {
-        number: "01",
-        title: "A real diagnosis.",
-        body: "A real diagnosis of what's broken in your marketing today.",
-      },
-      {
-        number: "02",
-        title: "A custom plan.",
-        body: "A plan built for one business: yours. No templates.",
-      },
-      {
-        number: "03",
-        title: "A clear next step.",
-        body: "Exact next steps. No guesswork.",
-      },
-      {
-        number: "04",
-        title: "No sales pitch.",
-        body: "The plan is yours. If you want help building it, that's a separate conversation.",
-      },
+      "A real diagnosis of what's broken in your marketing today.",
+      "A plan built for one business: yours. No templates.",
+      "Exact next steps. No guesswork.",
+      "A specific budget plan — where to spend, where to stop.",
+      "The plan is yours. If you want help building it, that's a separate conversation.",
     ],
   },
 
-  // ── 4. How it works ─────────────────────────────────────
+  // ── How it works (right card) ───────────────────────────
   howItWorks: {
     heading: "How it works.",
     steps: [
-      {
-        number: "01",
-        title: "Apply.",
-        body: "Fill the form. Takes 60 seconds.",
-      },
-      {
-        number: "02",
-        title: "Choose.",
-        body: "Pick a time that works for you.",
-      },
-      {
-        number: "03",
-        title: "Show up.",
-        body: "Get on the call. Walk away with the plan.",
-      },
+      { label: "STEP 1", body: "Fill the form. Takes 60 seconds." },
+      { label: "STEP 2", body: "Pick a time that works for you." },
+      { label: "STEP 3", body: "Get on the call. Walk away with the plan." },
     ],
   },
 
-  // ── 5. Availability ─────────────────────────────────────
-  availability: {
-    eyebrow: "SPACE IS LIMITED",
-    statement: "5 free slots. Then I'm full.",
-    note: "Grab a slot before your competition does.",
-    cta: "Reserve my spot",
+  // ── Urgency ─────────────────────────────────────────────
+  urgency: {
+    headline: "5 free slots. Then I'm full.",
+    body: "Grab a slot before your competition does.",
   },
 
-  // ── 6. Questions ────────────────────────────────────────
+  // ── FAQ ─────────────────────────────────────────────────
   faq: {
     heading: "Questions.",
     items: [
@@ -143,7 +119,7 @@ export const siteConfig = {
     ],
   },
 
-  // ── 7. Booking form ─────────────────────────────────────
+  // ── Form ────────────────────────────────────────────────
   form: {
     heading: "Ready? Let's go.",
     subhead: "Six questions. The rest is on me.",
@@ -156,42 +132,28 @@ export const siteConfig = {
         label: "Website or Facebook Page Link",
         placeholder: "facebook.com/yourbusiness",
       },
-      message: {
-        label: "Message for Us",
-        placeholder: "Optional",
-      },
+      message: { label: "Message for Us", placeholder: "Optional" },
     },
     submitLabel: "Book my call",
     submittingLabel: "Booking",
     consentNote: "Free. No card. No pitch.",
   },
 
-  // ── 8. Footer ───────────────────────────────────────────
+  // ── Footer ──────────────────────────────────────────────
   footer: {
     audience: "For Nepali businesses building something serious.",
-    links: [
-      { label: "Privacy", href: "#" },
-      { label: "Contact", href: "mailto:contact.kritagya27@gmail.com" },
-      { label: "WhatsApp", href: "https://wa.me/977XXXXXXXXXX" },
-    ],
     legal: "© 2026 Kritagya Bhandari.",
   },
 
-  // ── /thanks page ────────────────────────────────────────
+  // ── /thanks ─────────────────────────────────────────────
   thanks: {
     headline: "You're in.",
     subhead: "Application received. Two quick steps to lock it in.",
-    video: {
-      eyebrow: "01 — WATCH",
-      heading: "A two-minute message.",
-    },
-    calendly: {
-      eyebrow: "02 — BOOK",
-      heading: "Choose your slot.",
-    },
+    video: { eyebrow: "01 — WATCH", heading: "A two-minute message." },
+    calendly: { eyebrow: "02 — BOOK", heading: "Choose your slot." },
     whatsapp: {
       label: "Trouble booking? Message on WhatsApp.",
-      href: "https://wa.me/977XXXXXXXXXX",
+      href: "https://wa.me/9779761673867",
     },
   },
 } as const;

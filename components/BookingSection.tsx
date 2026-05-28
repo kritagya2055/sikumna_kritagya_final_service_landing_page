@@ -6,17 +6,20 @@ const { form } = siteConfig;
 
 export function BookingSection() {
   return (
-    <section id="book" className="scroll-mt-6 bg-obsidian py-20 md:py-32">
-      <div className="mx-auto max-w-xl px-6">
-        <FadeIn className="text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl">
-            {form.heading}
-          </h2>
-          <p className="mt-4 text-lg text-muted">{form.subhead}</p>
-        </FadeIn>
-
-        <FadeIn delay={0.1} className="mt-12 rounded-2xl bg-[#111111] p-8 md:p-10">
-          <LeadForm />
+    <section id="book" className="scroll-mt-8 px-5 py-16 md:py-24">
+      <div className="mx-auto max-w-[720px]">
+        <FadeIn className="card px-7 py-10 md:px-12 md:py-14">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl">
+              {form.heading}
+            </h2>
+            <p className="mt-3 text-base text-muted md:text-lg">
+              {form.subhead}
+            </p>
+          </div>
+          <div className="mt-10">
+            <LeadForm />
+          </div>
         </FadeIn>
       </div>
     </section>

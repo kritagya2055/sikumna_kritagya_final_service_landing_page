@@ -5,20 +5,20 @@ const { faq } = siteConfig;
 
 export function Faq() {
   return (
-    <section className="bg-white py-20 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
+    <section className="px-5 py-16 md:py-24">
+      <div className="mx-auto max-w-[800px]">
         <FadeIn>
-          <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
             {faq.heading}
           </h2>
         </FadeIn>
 
-        <div className="mt-12">
+        <div className="mt-10">
           {faq.items.map((item, i) => (
             <FadeIn key={item.q} delay={i * 0.04}>
-              <details className="group border-t border-platinum/60 py-6 last:border-b">
+              <details className="group border-t border-cardBorder py-6 last:border-b">
                 <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6">
-                  <span className="text-lg font-medium tracking-tight text-ink md:text-xl">
+                  <span className="text-lg font-medium text-white md:text-xl">
                     {item.q}
                   </span>
                   <span

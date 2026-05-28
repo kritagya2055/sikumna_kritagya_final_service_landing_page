@@ -10,29 +10,42 @@
   }
 
   body {
-    @apply bg-obsidian text-white font-sans;
+    @apply bg-bg text-white font-sans;
   }
 
-  /* Visible focus ring — adapts to either background via currentColor. */
   :focus-visible {
-    @apply outline-none ring-2 ring-platinum ring-offset-2;
-    --tw-ring-offset-color: transparent;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+}
+
+@layer components {
+  /* Re-usable surface card. */
+  .card {
+    background-color: theme(colors.card);
+    border: 1px solid theme(colors.cardBorder);
+    border-radius: theme(borderRadius.card);
+  }
+
+  /* Primary violet CTA. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-8 py-4 font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent/95;
   }
 }
 
 @layer utilities {
-  /* Eyebrow / caption styling. Set the color per-use:
-     platinum on obsidian, muted on white for WCAG AA contrast. */
+  /* Small-caps eyebrow / label utility. */
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.2em];
+    @apply text-xs font-semibold uppercase tracking-[0.16em];
   }
 
-  /* Subtle radial vignette for the hero only. */
-  .hero-vignette {
-    background: radial-gradient(
-      ellipse 80% 60% at 50% 35%,
-      rgba(255, 255, 255, 0.04),
-      transparent 70%
-    );
+  /* Dark gradient placeholder shown when no hero image is present. */
+  .hero-gradient {
+    background:
+      radial-gradient(
+        ellipse 70% 60% at 50% 35%,
+        rgba(124, 92, 252, 0.18),
+        transparent 70%
+      ),
+      linear-gradient(180deg, #15101f 0%, #0b0b14 100%);
   }
 }

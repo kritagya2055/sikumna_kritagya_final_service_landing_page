@@ -1,32 +1,24 @@
-import { FadeIn } from "@/components/FadeIn";
 import { siteConfig } from "@/site.config";
 
 const { deliverables } = siteConfig;
 
 export function Deliverables() {
   return (
-    <section className="bg-offwhite py-20 md:py-32">
-      <div className="mx-auto max-w-content px-6">
-        <FadeIn>
-          <h2 className="text-center text-3xl font-semibold tracking-tight text-ink md:text-5xl">
-            {deliverables.heading}
-          </h2>
-        </FadeIn>
-
-        <div className="mx-auto mt-16 grid max-w-3xl gap-x-16 gap-y-14 sm:grid-cols-2">
-          {deliverables.items.map((item, i) => (
-            <FadeIn key={item.number} delay={i * 0.08}>
-              <p className="text-4xl font-semibold tracking-tight text-muted md:text-5xl">
-                {item.number}
-              </p>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight text-ink">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-muted">{item.body}</p>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="card h-full px-7 py-10 md:px-10 md:py-12">
+      <h3 className="font-display text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
+        {deliverables.heading}
+      </h3>
+      <ul className="mt-8 space-y-5">
+        {deliverables.items.map((item) => (
+          <li key={item} className="flex gap-4">
+            <span
+              aria-hidden
+              className="mt-2 inline-block h-2 w-2 flex-none rounded-full bg-accent"
+            />
+            <span className="text-base text-white md:text-lg">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

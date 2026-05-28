@@ -8,19 +8,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#0A0A0A",
-        white: "#FFFFFF",
-        offwhite: "#F7F6F2",
-        platinum: "#C8C7C2",
-        ink: "#0E0E10",
-        muted: "#6E6E72",
+        bg: "#0B0B14",
+        card: "#15151E",
+        cardDeep: "#0E0E1E",
+        cardBorder: "rgba(255,255,255,0.08)",
+        accent: "#7C5CFC",
+        accentSoft: "#A78BFA",
+        muted: "#A1A1AA",
+        inputBg: "#1A1A24",
+        inputBorder: "rgba(255,255,255,0.10)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "1200px",
+      },
+      borderRadius: {
+        card: "24px",
       },
     },
   },

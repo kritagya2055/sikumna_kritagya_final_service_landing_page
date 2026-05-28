@@ -8,9 +8,9 @@ const { fields, submitLabel, submittingLabel, consentNote } = siteConfig.form;
 
 type Status = "idle" | "submitting" | "error";
 
-const labelClass = "eyebrow block text-platinum";
+const labelClass = "block text-sm font-medium text-muted mb-2";
 const inputClass =
-  "w-full border-0 border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-muted focus:border-white focus:outline-none focus:ring-0 transition-colors duration-200";
+  "w-full rounded-[10px] border border-inputBorder bg-inputBg px-[18px] py-[14px] text-white placeholder:text-muted/70 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40 transition-colors duration-200";
 
 export function LeadForm() {
   const router = useRouter();
@@ -25,9 +25,9 @@ export function LeadForm() {
     const data = new FormData(event.currentTarget);
     const get = (key: string) => String(data.get(key) ?? "").trim();
 
-    // Map the v3 form fields onto the existing /api/lead contract
+    // Map the v4 form fields onto the existing /api/lead contract
     // (name, email, company, message, website-honeypot) so every detail
-    // reaches the notification email without changing the API route.
+    // reaches the notification email without touching the API route.
     const note = get("message");
     const composedMessage = [
       `WhatsApp: ${get("whatsapp")}`,
@@ -64,10 +64,10 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       <div>
         <label htmlFor="name" className={labelClass}>
-          {fields.name.label}
+          {fields.name.label} <span className="text-accent">*</span>
         </label>
         <input
           id="name"
@@ -82,7 +82,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="email" className={labelClass}>
-          {fields.email.label}
+          {fields.email.label} <span className="text-accent">*</span>
         </label>
         <input
           id="email"
@@ -97,7 +97,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="whatsapp" className={labelClass}>
-          {fields.whatsapp.label}
+          {fields.whatsapp.label} <span className="text-accent">*</span>
         </label>
         <input
           id="whatsapp"
@@ -113,7 +113,7 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="business" className={labelClass}>
-          {fields.business.label}
+          {fields.business.label} <span className="text-accent">*</span>
         </label>
         <input
           id="business"
@@ -128,12 +128,12 @@ export function LeadForm() {
 
       <div>
         <label htmlFor="link" className={labelClass}>
-          {fields.link.label}
+          {fields.link.label} <span className="text-accent">*</span>
         </label>
         <input
           id="link"
           name="link"
-          type="text"
+          type="url"
           required
           autoComplete="url"
           placeholder={fields.link.placeholder}
@@ -148,7 +148,7 @@ export function LeadForm() {
         <textarea
           id="message"
           name="message"
-          rows={2}
+          rows={3}
           placeholder={fields.message.placeholder}
           className={`${inputClass} resize-none`}
         />
@@ -176,9 +176,10 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-full bg-white px-8 py-4 text-sm font-medium text-ink transition-opacity duration-200 hover:opacity-90 disabled:opacity-60 md:text-base"
+          className="btn-primary w-full text-base disabled:opacity-60 disabled:hover:translate-y-0"
         >
-          {status === "submitting" ? submittingLabel : submitLabel}
+          {status === "submitting" ? submittingLabel : submitLabel}{" "}
+          {status === "submitting" ? null : <span aria-hidden>→</span>}
         </button>
         <p className="mt-4 text-center text-sm text-muted">{consentNote}</p>
       </div>

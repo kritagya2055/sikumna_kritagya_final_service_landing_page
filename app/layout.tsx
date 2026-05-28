@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { siteConfig } from "@/site.config";
 import "./globals.css";
 
-const inter = Inter({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const serif = Instrument_Serif({
+const body = Inter({
   subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-  variable: "--font-serif",
+  weight: ["400", "500"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -44,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${serif.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>{children}</body>
     </html>
   );
