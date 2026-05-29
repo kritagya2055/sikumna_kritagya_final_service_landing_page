@@ -37,23 +37,4 @@
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-[0.16em];
   }
-
-  /* Premium dark hero background — warm radial glow rising from the
-     bottom-center over a deep #0B0B14 base. Top stays very dark to keep
-     the headline crisp; warmth only emerges in the lower third. */
-  .hero-gradient {
-    background:
-      linear-gradient(
-        180deg,
-        #0b0b14 0%,
-        rgba(11, 11, 20, 0.75) 50%,
-        rgba(11, 11, 20, 0) 100%
-      ),
-      radial-gradient(
-        ellipse 80% 55% at 50% 120%,
-        rgba(220, 70, 40, 0.35) 0%,
-        transparent 70%
-      ),
-      #0b0b14;
-  }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone } from "lucide-react";
 import { siteConfig } from "@/site.config";
@@ -23,11 +24,36 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-      {/* Pure CSS background — deep #0B0B14 base with a warm radial
-          glow rising from the bottom-center. See `.hero-gradient` in
-          app/globals.css. */}
-      <div aria-hidden className="hero-gradient absolute inset-0" />
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-bg">
+      {/* Full-bleed background image — drop the JPG at `public/hero-bg.jpg`. */}
+      <Image
+        src="/hero-bg.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="absolute inset-0 object-cover object-center"
+      />
+
+      {/* Top→middle→bottom dark veil for text contrast. */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(11,11,20,0.85) 0%, rgba(11,11,20,0.55) 50%, rgba(11,11,20,0.80) 100%)",
+        }}
+      />
+
+      {/* Subtle radial vignette — keeps the headline area especially crisp. */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 55% at 50% 40%, rgba(11,11,20,0.55) 0%, transparent 70%)",
+        }}
+      />
 
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center px-6 py-24 text-center md:py-32"
